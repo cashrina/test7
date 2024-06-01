@@ -13,6 +13,7 @@ import pizzaImage from '../../assets/pizza.png';
 import wafflesImage from '../../assets/waffles.png';
 import MenuButton from '../MenuButton/MenuButton.tsx'
 import { useState } from 'react'
+import Order from '../Order/Order.tsx'
 
 interface Imenu {
 	name: string;
@@ -25,15 +26,13 @@ interface IMenu {
 	count: number;
 }
 const Menu = () => {
-	const [Items, setItems] = useState<IMenu[]>([
-		{name: '', count: 0},
-	]);
+	const [Items, setItems] = useState<IMenu[]>([]);
 
 	const MENU: Imenu[] = [
 		{name: 'Biscuit', price: 180, image: biscuitImage},
 		{name: 'Burger', price: 250, image: burgerImage},
 		{name: 'Cake', price: 110, image: cakeImage},
-		{name: 'Coffee', price: 60, image: coffeeImage},
+		{name: 'Coffee', price: 160, image: coffeeImage},
 		{name: 'Cola', price: 160, image: colaImage},
 		{name: 'Cookies', price: 160, image: cookiesImage},
 		{name: 'Free', price: 150, image: freeImage},
@@ -57,6 +56,11 @@ const Menu = () => {
 		});
 	};
 
+	const getCount = (value:string) => {
+		const count = Items.filter(item => item.name === value);
+		const prise = MENU.filter(priseItem => priseItem.name === value)
+		return count[0].count * prise[0].price;
+	};
 
 	console.log(Items)
 	return (
@@ -68,6 +72,12 @@ const Menu = () => {
 											menuName={item.name}
 											menuPrice={item.price}
 											onAddItem = {() => addItem(item.name)}/>
+				))}
+			</div>
+
+			<div className="order">
+				{Items.map((createItem, index) => (
+					<Order key={index} name={createItem.name} count={createItem.count} sumItems= {() => getCount(createItem.name)}/>
 				))}
 			</div>
 
