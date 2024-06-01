@@ -62,6 +62,18 @@ const Menu = () => {
 		return count[0].count * prise[0].price;
 	};
 
+	const removeItem = (deleteItem: string) => {
+		setItems((prevState) => {
+			const updatedItems = prevState.map((orderItem) => {
+				if (orderItem.name === deleteItem && orderItem.count > 0) {
+					return { ...orderItem, count: orderItem.count - 1 };
+				}
+				return orderItem;
+			});
+			return updatedItems.filter((item) => item.count > 0);
+		});
+	};
+
 	console.log(Items)
 	return (
 		<div className="container">
@@ -77,7 +89,7 @@ const Menu = () => {
 
 			<div className="order">
 				{Items.map((createItem, index) => (
-					<Order key={index} name={createItem.name} count={createItem.count} sumItems= {() => getCount(createItem.name)}/>
+					<Order key={index} name={createItem.name} count={createItem.count} sumItems= {() => getCount(createItem.name)} onRemove={() => removeItem(createItem.name)}/>
 				))}
 			</div>
 
