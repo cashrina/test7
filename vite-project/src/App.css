@@ -12,7 +12,15 @@
 .menu {
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
+  width: 70%;
+}
+
+.order {
+  padding: 15px;
+  width: 30%;
+  background-color: #977496;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
 }
 
 .menu-btn {
@@ -31,8 +39,30 @@
   background-position: right center;
 }
 
+.order-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  margin-bottom: -10px;
+}
+
+.order-name {
+  margin-right: auto;
+}
+
+.order-count {
+  padding: 0 20px 0 20px;
+}
+
+.order-sum {
+  margin-right: 30px;
+}
+
 .stock {
   margin-left: auto;
-  margin-right: 90px;
   padding: 0;
+  background: none ;
+  border: none;
 }

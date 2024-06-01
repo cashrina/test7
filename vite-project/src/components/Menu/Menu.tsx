@@ -33,8 +33,8 @@ const Menu = () => {
 		{name: 'Burger', price: 250, image: burgerImage},
 		{name: 'Cake', price: 110, image: cakeImage},
 		{name: 'Coffee', price: 160, image: coffeeImage},
-		{name: 'Cola', price: 160, image: colaImage},
-		{name: 'Cookies', price: 160, image: cookiesImage},
+		{name: 'Cola', price: 100, image: colaImage},
+		{name: 'Cookies', price: 120, image: cookiesImage},
 		{name: 'Free', price: 150, image: freeImage},
 		{name: 'Hotdog', price: 250, image: hotdogImage},
 		{name: 'Icecream', price: 90, image: icecreamImage},
@@ -90,7 +90,6 @@ const Menu = () => {
 
 	const total:number =getTotalPrise();
 
-	console.log(Items)
 	return (
 		<div className="container">
 			<div className="menu">
@@ -107,6 +106,7 @@ const Menu = () => {
 				{Items.map((createItem, index) => (
 					<Order key={index} name={createItem.name} count={createItem.count} sumItems={() => getCount(createItem.name)} onRemove={() => removeItem(createItem.name)} />
 				))}
+				<hr/>
 				<div className="price">Total price: <p>{total}</p></div>
 			</div>
 		</div>
