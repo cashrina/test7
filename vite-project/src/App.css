@@ -30,3 +30,9 @@
 .menu-btn:hover {
   background-position: right center;
 }
+
+.stock {
+  margin-left: auto;
+  margin-right: 90px;
+  padding: 0;
+}

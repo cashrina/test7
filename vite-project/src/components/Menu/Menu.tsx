@@ -12,15 +12,22 @@ import pancakesImage from '../../assets/pancakes.png';
 import pizzaImage from '../../assets/pizza.png';
 import wafflesImage from '../../assets/waffles.png';
 import MenuButton from '../MenuButton/MenuButton.tsx'
-
-
+import { useState } from 'react'
 
 interface Imenu {
 	name: string;
 	price: number;
 	image: string;
 }
+
+interface IMenu {
+	name: string;
+	count: number;
+}
 const Menu = () => {
+	const [Items, setItems] = useState<IMenu[]>([
+		{name: '', count: 0},
+	]);
 
 	const MENU: Imenu[] = [
 		{name: 'Biscuit', price: 180, image: biscuitImage},
@@ -37,7 +44,21 @@ const Menu = () => {
 		{name: 'Waffles', price: 170, image: wafflesImage},
 	];
 
+	const addItem = (name: string) => {
+		setItems((prevState) => {
+			const existingItem = prevState.find((item) => item.name === name);
+			if (existingItem) {
+				return prevState.map((item) =>
+					item.name === name ? { ...item, count: item.count + 1 } : item
+				);
+			} else {
+				return [...prevState, { name: name, count: 1 }];
+			}
+		});
+	};
 
+
+	console.log(Items)
 	return (
 		<div className="container">
 			<div className="menu">
@@ -45,7 +66,8 @@ const Menu = () => {
 					<MenuButton key={index}
 											menuImage={item.image}
 											menuName={item.name}
-											menuPrice={item.price}/>
+											menuPrice={item.price}
+											onAddItem = {() => addItem(item.name)}/>
 				))}
 			</div>
 
