@@ -4,3 +4,29 @@
   padding: 2rem;
   text-align: center;
 }
+
+.container {
+  display: flex;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  width: 30%;
+}
+
+.menu-btn {
+  cursor: pointer;
+  width: 140px;
+  margin: 15px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #8795b5 0%, #9a7fb3 51%, #977496 100%);
+}
+.menu-btn:hover {
+  background-position: right center;
+}
