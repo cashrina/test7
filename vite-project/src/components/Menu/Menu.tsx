@@ -74,6 +74,22 @@ const Menu = () => {
 		});
 	};
 
+	const getTotalPrise  = () => {
+		let emptySum = 0;
+		Items.forEach(item => {
+			MENU.forEach(info => {
+				if (item.name === info.name) {
+					if (item.count > 0) {
+						emptySum += item.count * info.price;
+					}
+				}
+			});
+		});
+		return emptySum;
+	};
+
+	const total:number =getTotalPrise();
+
 	console.log(Items)
 	return (
 		<div className="container">
@@ -89,10 +105,10 @@ const Menu = () => {
 
 			<div className="order">
 				{Items.map((createItem, index) => (
-					<Order key={index} name={createItem.name} count={createItem.count} sumItems= {() => getCount(createItem.name)} onRemove={() => removeItem(createItem.name)}/>
+					<Order key={index} name={createItem.name} count={createItem.count} sumItems={() => getCount(createItem.name)} onRemove={() => removeItem(createItem.name)} />
 				))}
+				<div className="price">Total price: <p>{total}</p></div>
 			</div>
-
 		</div>
 	)
 }
