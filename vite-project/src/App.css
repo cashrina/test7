@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Pixelify+Sans:wght@400..700&display=swap');
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
+
+body {font-family: 'Pixelify Sans', sans-serif;}
 
 .container {
   display: flex;
@@ -16,8 +20,10 @@
 }
 
 .order {
+  margin-top: 20px;
   padding: 15px;
   width: 30%;
+  height: 90%;
   background-color: #977496;
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
@@ -33,7 +39,12 @@
   color: white;
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
-  background-image: linear-gradient(to right, #8795b5 0%, #9a7fb3 51%, #977496 100%);
+  background-image: linear-gradient(
+    to right,
+    #8795b5 0%,
+    #9a7fb3 51%,
+    #977496 100%
+  );
 }
 .menu-btn:hover {
   background-position: right center;
@@ -63,6 +74,17 @@
 .stock {
   margin-left: auto;
   padding: 0;
-  background: none ;
+  background: none;
   border: none;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.price p {
+  margin: 0 20px 0 20px;
 }
